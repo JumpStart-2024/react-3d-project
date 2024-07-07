@@ -12,21 +12,23 @@ function Model() {
 //i disabled orbit controls so zooming on model works
 const ThreeDModel = ({onClick }) => {
   return (
-    <Canvas camera={{ position: [-3, 5, 10] }}>
+    <Canvas camera={{ position: [-3, 5, 10], fov: 50 }} dpr={[1, 2]}>
+      <spotLight position={[-100, -100, -100]} intensity={0.2} angle={0.3} penumbra={1} />
+      <hemisphereLight color="white" position={[0, 0, 5]} intensity={2} />
       <Suspense fallback={null}>
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[0, 10, 5]} intensity={1.5} />
         <Bounds fit clip observe margin={1.2}>
           <SelectToZoom>
             <Model />
           </SelectToZoom>
         </Bounds>
-        <Html scale={0.5} position={[-3, 5, 7]} transform occlude>
+        <ContactShadows rotation-x={Math.PI / 2} position={[0, -35, 0]} opacity={0.2} width={200} height={200} blur={1} far={50} />
+        <Html scale={0.5} position={[0, 0, 5]} transform occlude>
           <Popconfirm title="Welcome to our shop! click around to explore details :)" onConfirm={onClick} okText="Yes" cancelText="No">
             <a href="#">Click me to learn more!</a>
           </Popconfirm>
         </Html>
       </Suspense>
+      <OrbitControls makeDefault minPolarAngle={0} maxPolarAngle={Math.PI / 1.75} maxDistance={15} />
     </Canvas>
   );
 };
@@ -39,6 +41,7 @@ function SelectToZoom({ children }) {
     </group>
   )
 }
+
 
 export default ThreeDModel;
 

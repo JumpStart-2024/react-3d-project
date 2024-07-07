@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: #282c34;
+  background-color: #1a1b1f;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,7 +10,7 @@
 }
 
 .p{
-  background-color: black;
+  background-color: #1a1b1f;
   color:white;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #1a1b1f;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

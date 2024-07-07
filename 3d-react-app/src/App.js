@@ -1,7 +1,7 @@
 import './App.css';
 import ThreeDModel from './ThreeDModel';
 import React, { useState, useEffect } from 'react';
-import ClimbingBoxLoader from 'react-spinners/ClimbingBoxLoader';
+import BounceLoader from 'react-spinners/BounceLoader';
 
 function App() {
 
@@ -20,16 +20,17 @@ function App() {
     {
     loading ? 
     (
-      <ClimbingBoxLoader size={30} color={'#F37A24'} loading={loading} />
+      <BounceLoader size={30} color={'#F37A24'} loading={loading} />
     ) : 
     
-    (<div>
-
+    (<body>
+      <h1> Freedom Company & FabLab</h1>
+      <div class = "border"></div>
       <ThreeDModel />
       <h1>Welcome to our store!</h1>
       <p> We focus on sustainable fashion. Click around our store to learn more!</p>
 
-    </div>
+    </body>
     )
       
     };
