@@ -1,12 +1,20 @@
-import React, { Suspense, useState } from 'react';
+import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Html, OrbitControls, useGLTF, Bounds, useBounds, ContactShadows } from '@react-three/drei';
+import { Html, OrbitControls, useGLTF, Bounds, useBounds, ContactShadows, useTexture } from '@react-three/drei';
 import { Popconfirm } from 'antd';
 
 
 function Model() {
   const { scene } = useGLTF('store/ThriftstoreGLB.glb'); // Make sure to use the correct path to your 3D model
-  return <primitive object={scene} />;
+  const modelTextures = useTexture({
+    metalnessMap: "3d-react-app/public/textures/walls_Bake1_PBR_Metalness.png", 
+    normalMap:"3d-react-app/public/textures/walls_Bake1_PBR_Normal.png",
+    roughnessMap: "3d-react-app/public/textures/walls_Bake1_PBR_Roughness.png"
+  });
+  return (
+    <primitive object={scene}>
+      <mestStandardMaterial {...modelTextures} /> 
+    </primitive>);
 }
 
 //i disabled orbit controls so zooming on model works
@@ -22,11 +30,39 @@ const ThreeDModel = ({onClick }) => {
           </SelectToZoom>
         </Bounds>
         <ContactShadows rotation-x={Math.PI / 2} position={[0, -35, 0]} opacity={0.2} width={200} height={200} blur={1} far={50} />
-        <Html scale={0.5} position={[0, 0, 5]} transform occlude>
-          <Popconfirm title="Welcome to our shop! click around to explore details :)" onConfirm={onClick} okText="Yes" cancelText="No">
-            <a href="#">Click me to learn more!</a>
+
+        <Html scale={0.5} position={[3, 0, 4]} transform occlude >
+        <div className="annotation">
+          <Popconfirm title="input content here" onConfirm={onClick} okText="Yes" cancelText="No">
+            <a href="#">Pants</a>
           </Popconfirm>
+          </div>
         </Html>
+
+        <Html scale={0.5} position={[-2, 3, -2]} transform occlude >
+        <div className="annotation">
+          <Popconfirm title="input content here" onConfirm={onClick} okText="Yes" cancelText="No">
+            <a href="#">Tops</a>
+          </Popconfirm>
+          </div>
+        </Html>
+
+        <Html scale={0.5} position={[3, 3, 4]} transform occlude >
+          <div className="annotation">
+          <Popconfirm title="input content here" onConfirm={onClick} okText="Yes" cancelText="No">
+            <a href="#">Dresses</a>
+          </Popconfirm>
+          </div>
+        </Html>
+
+        <Html scale={0.5} position={[1, 0, 0]} transform occlude >
+        <div className="annotation">
+          <Popconfirm title="input content here" onConfirm={onClick} okText="Yes" cancelText="No">
+            <a href="#">Shoes</a>
+          </Popconfirm>
+          </div>
+        </Html>
+
       </Suspense>
       <OrbitControls makeDefault minPolarAngle={0} maxPolarAngle={Math.PI / 1.75} maxDistance={15} />
     </Canvas>

@@ -33,7 +33,7 @@ function App() {
     </body>
     )
       
-    };
+    }
       
     </div>
   );
