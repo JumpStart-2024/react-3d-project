@@ -7,9 +7,9 @@ import { Popconfirm } from 'antd';
 function Model() {
   const { scene } = useGLTF('store/ThriftstoreGLB.glb'); // Make sure to use the correct path to your 3D model
   const modelTextures = useTexture({
-    metalnessMap: "3d-react-app/public/textures/walls_Bake1_PBR_Metalness.png", 
-    normalMap:"3d-react-app/public/textures/walls_Bake1_PBR_Normal.png",
-    roughnessMap: "3d-react-app/public/textures/walls_Bake1_PBR_Roughness.png"
+    metalnessMap: "public/textures/walls_Bake1_PBR_Metalness.png", 
+    normalMap:"public/textures/walls_Bake1_PBR_Normal.png",
+    roughnessMap: "public/textures/walls_Bake1_PBR_Roughness.png"
   });
   return (
     <primitive object={scene}>
