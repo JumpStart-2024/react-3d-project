@@ -12,7 +12,7 @@ function App() {
         setLoading(true);
         setTimeout(() => {
           setLoading(false);
-        }, 8000);
+        }, 2000);
       }, []);
   return (
     
@@ -24,12 +24,7 @@ function App() {
     ) : 
     
     (<body>
-      <h1> Freedom Company & FabLab</h1>
-      <div class = "border"></div>
       <ThreeDModel />
-      <h1>Welcome to our store!</h1>
-      <p> We focus on sustainable fashion. Click around our store to learn more!</p>
-
     </body>
     )
       

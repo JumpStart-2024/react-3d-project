@@ -1,24 +1,44 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Html, OrbitControls, useGLTF, Bounds, useBounds, ContactShadows, useTexture } from '@react-three/drei';
 import { Popconfirm } from 'antd';
+import Modal from "react-bootstrap/Modal";
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import "bootstrap/dist/css/bootstrap.min.css";
+import Row from 'react-bootstrap/Row';
 
 
 function Model() {
   const { scene } = useGLTF('store/ThriftstoreGLB.glb'); // Make sure to use the correct path to your 3D model
   const modelTextures = useTexture({
-    metalnessMap: "public/textures/walls_Bake1_PBR_Metalness.png", 
-    normalMap:"public/textures/walls_Bake1_PBR_Normal.png",
-    roughnessMap: "public/textures/walls_Bake1_PBR_Roughness.png"
+    extraBake1DiffuseMap: "./store/textures/extra_Bake1_PBR_Diffuse.png", 
+    extraBake1MetalnessMap: "./store/textures/extra_Bake1_PBR_Metalness.png", 
+    extraBake1NormalMap: "./store/textures/extra_Bake1_PBR_Normal.png", 
+    extraBake1RoughnessMap: "./store/textures/walls_Bake1_PBR_Roughness.png", 
+    extraBake1SpecularMap: "./store/textures/extra_Bake1_PBR_Specular.png"
   });
   return (
     <primitive object={scene}>
-      <mestStandardMaterial {...modelTextures} /> 
+      <meshStandardMaterial {...modelTextures} /> 
     </primitive>);
+    
 }
 
 //i disabled orbit controls so zooming on model works
 const ThreeDModel = ({onClick }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  const showModal = () => {
+    setIsOpen(true);
+  };
+
+  const hideModal = () => {
+    setIsOpen(false);
+  };
+
+  const [show2, setShow2] = useState(false);
+
   return (
     <Canvas camera={{ position: [-3, 5, 10], fov: 50 }} dpr={[1, 2]}>
       <spotLight position={[-100, -100, -100]} intensity={0.2} angle={0.3} penumbra={1} />
@@ -33,10 +53,69 @@ const ThreeDModel = ({onClick }) => {
 
         <Html scale={0.5} position={[3, 0, 4]} transform occlude >
         <div className="annotation">
-          <Popconfirm title="input content here" onConfirm={onClick} okText="Yes" cancelText="No">
-            <a href="#">Pants</a>
-          </Popconfirm>
-          </div>
+          
+          <button onClick={showModal}>Pants</button>
+        <Modal show={isOpen} onHide={hideModal} dialogClassName="myModal" >
+          <Modal.Header closeButton>
+            <Modal.Title class="modal-title w-100 text-center">Pants</Modal.Title>
+          </Modal.Header>
+          <Modal.Body className="grid-example">
+        <Container>
+          <Row className="justify-content-md-center">
+            <Col xs={6} md={4}>
+            <img src="https://iheartcraftythings.com/wp-content/uploads/2021/06/dress-3.jpg" className="d-block mx-auto img-fluid w-50"/>
+              <button variant="primary" onClick={() => setShow2(true)}>
+                Item 1
+              </button>
+              <Modal show={show2} onHide={() => setShow2(false)}>
+                <Modal.Header closeButton />
+                <img src="https://iheartcraftythings.com/wp-content/uploads/2021/06/dress-3.jpg" className="d-block mx-auto img-fluid w-50"/>
+                <Modal.Title class="text-center">TITLE</Modal.Title>
+                <Modal.Body class="text-center">
+                  lorem ipsum
+                </Modal.Body>
+                <Modal.Footer>
+                  <button variant="danger" onClick={() => setShow2(false)}>
+                    Back
+                  </button>
+                  <button variant="danger" onClick={() => setShow2(false)}>
+                    Learn More
+                  </button>
+                </Modal.Footer>
+              </Modal>
+            </Col>
+            <Col xs={6} md={4}>
+            <img src="https://iheartcraftythings.com/wp-content/uploads/2021/06/dress-3.jpg" className="d-block mx-auto img-fluid w-50"/>
+              item 2
+            </Col>
+            <Col xs={6} md={4}>
+            <img src="https://iheartcraftythings.com/wp-content/uploads/2021/06/dress-3.jpg" className="d-block mx-auto img-fluid w-50"/>
+              item 3
+            </Col>
+          </Row>
+
+          <Row className="justify-content-md-center">
+            <Col xs={6} md={4}>
+            <img src="https://iheartcraftythings.com/wp-content/uploads/2021/06/dress-3.jpg" className="d-block mx-auto img-fluid w-50"/>
+              item 4
+            </Col>
+            <Col xs={6} md={4}>
+            <img src="https://iheartcraftythings.com/wp-content/uploads/2021/06/dress-3.jpg" className="d-block mx-auto img-fluid w-50"/>
+              item 5
+            </Col>
+            <Col xs={6} md={4}>
+            <img src="https://iheartcraftythings.com/wp-content/uploads/2021/06/dress-3.jpg" className="d-block mx-auto img-fluid w-50"/>
+              item 6
+            </Col>
+          </Row>
+        </Container>
+      </Modal.Body>
+          <Modal.Footer>
+            <button onClick={hideModal}>Cancel</button>
+          </Modal.Footer>
+        </Modal>
+
+        </div>
         </Html>
 
         <Html scale={0.5} position={[-2, 3, -2]} transform occlude >
