@@ -17,18 +17,15 @@ function App() {
   return (
     
     <div className="App">
-    {
-    loading ? 
-    (
-      <BounceLoader size={30} color={'#F37A24'} loading={loading} />
-    ) : 
-    
-    (<body>
-      <ThreeDModel />
-    </body>
-    )
-      
-    }
+      {
+        loading ? 
+        <BounceLoader size={30} color={'#F37A24'} loading={loading} />
+        : 
+        <div>
+         
+          <ThreeDModel />
+        </div>
+      }
       
     </div>
   );
