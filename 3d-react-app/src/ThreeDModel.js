@@ -3,7 +3,7 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF, PerspectiveCamera } from '@react-three/drei';
 
 function Model() {
-  const { scene } = useGLTF('/store/ThriftStore.glb'); // Ensure the path is correct
+  const { scene } = useGLTF('/store/ThriftStore1.glb'); // Ensure the path is correct
   scene.scale.set(0.5, 0.5, 0.5); // Adjust scale as needed
   scene.position.set(0, 0, 0); // Center the model
   return <primitive object={scene} />;
