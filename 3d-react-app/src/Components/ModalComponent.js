@@ -21,9 +21,11 @@ const CustomModal = ({
         onOk={handleOk}
         onCancel={handleCancel}
         isModalVisible={isModalVisible}
-        width={1000}
-        height={500}
+        width={800}
+        bodyStyle={{ height: "350px" }}
         mask={true}
+        zIndex={10000000}
+        maskClosable={false}
       >
         <Row justify="space-evenly">
           {body.map((element) => {
