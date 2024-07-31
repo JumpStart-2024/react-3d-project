@@ -13,6 +13,7 @@ import ButtonComponent from "./Components/ButtonComponent";
 import CustomModal from "./Components/ModalComponent";
 import { clothingItemsData } from "./Data/ClothingData";
 import { Clothes } from "./Constants/Clothes";
+import { MeshReflectorMaterial } from "@react-three/drei";
 
 function Model() {
   const { scene } = useGLTF("store/ThriftstoreGLB.glb"); // Make sure to use the correct path to your 3D model
@@ -30,7 +31,21 @@ function Model() {
   );
 }
 
-//i disabled orbit controls so zooming on model works
+const Floor = () => {
+  return (
+    <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]}>
+      <planeGeometry args={[30, 30]} />
+      <MeshReflectorMaterial
+        blur={[400, 100]}
+        resolution={1024}
+        roughness={1}
+        mirror={0}
+      />
+      <meshPhongMaterial color="grey" />
+    </mesh>
+  );
+};
+
 const ThreeDModel = ({ onClick }) => {
   const [isPantsModalVisible, setPantsModalVisible] = useState(false);
   const [isDressesModalVisible, setDressesModalVisible] = useState(false);
@@ -62,21 +77,33 @@ const ThreeDModel = ({ onClick }) => {
   };
 
   return (
-    <div style={{ overflow: "hidden" }}>
-      <Canvas camera={{ position: [-3, 5, 10], fov: 50 }} dpr={[1, 2]}>
+    <div
+      style={{
+        overflowX: "hidden",
+        overflowY: "hidden",
+        width: "100vw",
+        height: "100vh",
+      }}
+    >
+      <Canvas camera={{ position: [-2, 4, 9], fov: 50 }} dpr={[0.5, 1]} shadows>
         <spotLight
-          position={[-100, -100, -100]}
-          intensity={0.2}
-          angle={0.3}
+          position={[0, 9, 0]}
+          angle={1}
+          distance={50}
           penumbra={1}
+          intensity={100}
+          castShadow
+          color="white"
+          shadow-mapSize={[2048, 2048]}
         />
-        <hemisphereLight color="white" position={[0, 0, 5]} intensity={2} />
+
         <Suspense fallback={null}>
           <Bounds fit clip observe margin={1.2}>
             <SelectToZoom>
               <Model />
             </SelectToZoom>
           </Bounds>
+          <Floor />
           <ContactShadows
             rotation-x={Math.PI / 2}
             position={[0, -35, 0]}
