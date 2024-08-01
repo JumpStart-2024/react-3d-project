@@ -34,7 +34,7 @@ function Model() {
 const Floor = () => {
   return (
     <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -1.9, 0]}>
-      <planeGeometry args={[50, 50]} />
+      <planeGeometry args={[200, 200]} />
       <MeshReflectorMaterial
         blur={[400, 100]}
         resolution={1024}
