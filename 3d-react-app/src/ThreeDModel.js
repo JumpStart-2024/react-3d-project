@@ -33,20 +33,15 @@ function Model() {
 
 const Floor = () => {
   return (
-    <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]}>
-      <planeGeometry args={[30, 30]} />
+    <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -1.9, 0]}>
+      <planeGeometry args={[50, 50]} />
       <MeshReflectorMaterial
-        blur={[300, 100]}
-        resolution={2048}
-        mixStrength={80}
-        roughness={1}
-        depthScale={1.2}
-        minDepthThreshold={0.4}
-        maxDepthThreshold={1.4}
-        color="white"
-        metalness={0.5}
+        blur={[400, 100]}
+        resolution={1024}
+        mixStrength={15}
+        depthScale={1}
+        minDepthThreshold={0.85}
       />
-      <meshPhongMaterial color="grey" />
     </mesh>
   );
 };
@@ -90,16 +85,17 @@ const ThreeDModel = ({ onClick }) => {
         height: "100vh",
       }}
     >
-      <Canvas camera={{ position: [-2, 4, 9], fov: 50 }} dpr={[0.5, 1]} shadows>
-        <spotLight
-          position={[0, 9, 0]}
-          angle={1}
-          distance={50}
-          penumbra={1}
-          intensity={100}
+      <Canvas
+        camera={{ position: [-2, 4, 9], fov: 50, maxDistance: 5 }}
+        dpr={[1, 2]}
+        shadows
+      >
+        <ambientLight intensity={0.25} />
+        <directionalLight
           castShadow
-          color="white"
-          shadow-mapSize={[2048, 2048]}
+          intensity={2}
+          position={[10, 6, 6]}
+          shadow-mapSize={[1024, 1024]}
         />
 
         <Suspense fallback={null}>
