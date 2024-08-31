@@ -1,70 +1,85 @@
 import ClothingItems from "../Utils/ClothingItems"
 
+import blackLeatherPants from "../Assets/pants/blackLeatherPants.png"
+import creamLinenPants from "../Assets/pants/creamLinenPants.png"
+import jeans from "../Assets/pants/jeans.png"
+
+import blueSilkDress from "../Assets/dresses/blueSilkDress.png"
+import linenDress from "../Assets/dresses/linenDress.png"
+import sequenceDress from "../Assets/dresses/sequenceDress.png"
+
+
+import woolCoat from "../Assets/jackets/woolCoat.png"
+import leatherJacket from "../Assets/jackets/leatherJacket.png"
+import denimJacket from "../Assets/jackets/denimJacket.png"
+
+const text = "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages."
 
 export const clothingItemsData = {
     
     Pants: [
         new ClothingItems(
             "Leather", 
-            "https://iheartcraftythings.com/wp-content/uploads/2021/06/dress-3.jpg",
+            blackLeatherPants,
             "Pants",
-            "Leather pants edjefieodkf"
+            text
+            
         ),
             
         new ClothingItems(
             "Linen",
-            "https://iheartcraftythings.com/wp-content/uploads/2021/06/dress-3.jpg",
+            creamLinenPants,
             "Pants",
-            "Linen pants dsljfdlkjvmd;klvmfd"
+            text
         ),
         new ClothingItems(
             "Jeans",
-            "https://iheartcraftythings.com/wp-content/uploads/2021/06/dress-3.jpg",
+            jeans,
             "Pants",
-            "Jeans pants dsljfdlkjvmd;eifjeiowfjkewodsfkj"
+            text
         ),
 
     ],
     Dresses: [
         new ClothingItems(
             "Sequence", 
-            "https://iheartcraftythings.com/wp-content/uploads/2021/06/dress-3.jpg",
+            sequenceDress,
             "Dresses",
-            "Dresses dfehwdsifjie edjefieodkf"
+            text
         ),
             
         new ClothingItems(
             "Linen",
-            "https://iheartcraftythings.com/wp-content/uploads/2021/06/dress-3.jpg",
+            linenDress,
             "Dresses",
-            "Linen dress dsljfdlkjvmd;klvmfd"
+            text
         ),
         new ClothingItems(
-            "Cotton",
-            "https://iheartcraftythings.com/wp-content/uploads/2021/06/dress-3.jpg",
+            "Silk",
+            blueSilkDress,
             "Dresses",
-            "sdjfhidsfhjenidfhncvjddsljfdlkjvmd;eifjeiowfjkewodsfkj"
+            text
         ),
     ],
     Jackets: [
         new ClothingItems(
-            "Jean", 
-            "https://iheartcraftythings.com/wp-content/uploads/2021/06/dress-3.jpg",
+            "Denim", 
+            denimJacket,
             "Jackets",
-            "sudjhisdodkf"
+            text
         ),
             
         new ClothingItems(
             "Leather",
-            "https://iheartcraftythings.com/wp-content/uploads/2021/06/dress-3.jpg",
+            leatherJacket,
             "Jackets",
-            ";sjodkjwesaod"
+            text
         ),
         new ClothingItems(
-            "Polyester",
-            "https://iheartcraftythings.com/wp-content/uploads/2021/06/dress-3.jpg",
+            "Wool",
+            woolCoat,
             "Jackets",
-            "eifjeiowfjkewodsfkj"
+            text
         ),
     ],
 
@@ -73,20 +88,20 @@ export const clothingItemsData = {
             "Jean", 
             "https://iheartcraftythings.com/wp-content/uploads/2021/06/dress-3.jpg",
             "Shoes",
-            "sudjhisdodkf"
+            text
         ),
             
         new ClothingItems(
             "Leather",
             "https://iheartcraftythings.com/wp-content/uploads/2021/06/dress-3.jpg",
             "Shoes",
-            ";sjodkjwesaod"
+            text
         ),
         new ClothingItems(
             "Polyester",
             "https://iheartcraftythings.com/wp-content/uploads/2021/06/dress-3.jpg",
             "Shoes",
-            "eifjeiowfjkewodsfkj"
+            text
         ),
     ]
 
