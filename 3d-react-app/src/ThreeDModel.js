@@ -6,6 +6,7 @@ import {
   OrbitControls,
   useGLTF,
   Bounds,
+  useBounds,
   ContactShadows,
 } from "@react-three/drei";
 
@@ -25,35 +26,31 @@ export default function ThreeDModel() {
   };
 
   function Model({ modelPath, onLoad, onClick }) {
-    const { scene } = useGLTF(modelPath); // Load the model using useGLTF
+    const { scene } = useGLTF(modelPath);
     setLoading(onLoad);
     return <primitive object={scene} onClick={onClick} />;
   }
 
-  // Component to manage the camera position dynamically
   function CameraController({ currentModel }) {
     const { camera } = useThree();
 
     useEffect(() => {
       if (currentModel === filePath.exterior) {
-        // Set camera position for the exterior model
         camera.position.set(-7.543824921630986, 27.201460173178525, 41.269495635381254);
       } else if (currentModel === filePath.interior) {
-        // Set camera position for the interior model
         camera.position.set(-3.563440580530719, 3.065772026962534, 8.44748608182418);
       }
-    }, [currentModel, camera]); // Run this effect whenever the current model changes
+    }, [currentModel, camera]); 
 
-    return null; // This component does not render anything
+    return null; 
   }
 
-  // Component to log the camera position
   function CameraLogger() {
     useFrame((state) => {
       const { x, y, z } = state.camera.position;
       console.log(`Camera Position: x=${x}, y=${y}, z=${z}`);
     });
-    return null; // This component does not render anything
+    return null; 
   }
 
   return (
@@ -73,7 +70,18 @@ export default function ThreeDModel() {
         />
 
         <Suspense fallback={null}>
-          <Model modelPath={currentModel} onClick={handleModelClick} onLoad={false} />
+
+        <Bounds>
+            {currentModel === filePath.interior ? (
+              <SelectToZoom>
+                <Model modelPath={currentModel} onClick={handleModelClick} onLoad={false} />
+              </SelectToZoom>
+            ) : (
+              <Model modelPath={currentModel} onClick={handleModelClick} onLoad={false} />
+            )}
+          </Bounds>
+
+          
           
           {showButtons && (
             <StoreButtons />
@@ -95,7 +103,7 @@ export default function ThreeDModel() {
           enableZoom={true}
           minPolarAngle={0}
           maxPolarAngle={Math.PI / 1.75}
-          maxDistance={50} // Increased the max distance for more flexibility
+          maxDistance={40} // Increased the max distance for more flexibility
         />
 
         {/* CameraController component to update the camera based on the current model */}
@@ -120,3 +128,17 @@ export default function ThreeDModel() {
     </div>
   );
 };
+
+function SelectToZoom({ children }) {
+  const api = useBounds();
+  return (
+    <group
+      onClick={(e) => (
+        e.stopPropagation(), e.delta <= 2 && api.refresh(e.object).fit()
+      )}
+      onPointerMissed={(e) => e.button === 0 && api.refresh().fit()}
+    >
+      {children}
+    </group>
+  );
+}
