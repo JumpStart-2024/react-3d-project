@@ -40,7 +40,7 @@ export default function ThreeDModel() {
         camera.position.set(-7.543824921630986, 27.201460173178525, 41.269495635381254);
       } else if (currentModel === filePath.interior) {
         // Set camera position for the interior model
-        camera.position.set(-0.8736993026111832, 2.7338998881562193, 5.545389222100792);
+        camera.position.set(-3.563440580530719, 3.065772026962534, 8.44748608182418);
       }
     }, [currentModel, camera]); // Run this effect whenever the current model changes
 
