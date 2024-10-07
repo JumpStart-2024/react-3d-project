@@ -71,7 +71,7 @@ export default function ThreeDModel() {
 
         <Suspense fallback={null}>
 
-        <Bounds>
+        {/* <Bounds>
             {currentModel === filePath.interior ? (
               <SelectToZoom>
                 <Model modelPath={currentModel} onClick={handleModelClick} onLoad={false} />
@@ -79,7 +79,9 @@ export default function ThreeDModel() {
             ) : (
               <Model modelPath={currentModel} onClick={handleModelClick} onLoad={false} />
             )}
-          </Bounds>
+          </Bounds> */}
+
+          <Model modelPath={currentModel} onClick={handleModelClick} onLoad={false} />
 
           
           
