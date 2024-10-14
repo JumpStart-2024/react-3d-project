@@ -100,13 +100,25 @@ export default function ThreeDModel() {
           />
         </Suspense>
 
-        <OrbitControls
-          makeDefault
-          enableZoom={true}
-          minPolarAngle={0}
-          maxPolarAngle={Math.PI / 1.75}
-          maxDistance={40} // Increased the max distance for more flexibility
-        />
+        {currentModel === filePath.interior ? (
+                <OrbitControls
+                makeDefault
+                enableZoom={true}
+                minPolarAngle={0}
+                maxPolarAngle={Math.PI / 1.75}
+                maxDistance={10} // Increased the max distance for more flexibility
+              />
+            ) : (
+                <OrbitControls
+                makeDefault
+                enableZoom={true}
+                minPolarAngle={0}
+                maxPolarAngle={Math.PI / 1.75}
+                maxDistance={40} // Increased the max distance for more flexibility
+              />
+            )}
+
+
 
         {/* CameraController component to update the camera based on the current model */}
         <CameraController currentModel={currentModel} />
