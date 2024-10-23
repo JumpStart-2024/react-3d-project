@@ -44,7 +44,7 @@ export default function StoreButtons() {
   return (
     <>
 
-      <Html scale={0.5} position={[10, 1, 5]} transform occlude>
+      <Html scale={0.5} position={[3, 0, 2]} transform occlude>
         <ButtonComponent
           showModal={() => showModal(setPantsModalVisible)}
           buttonName={Clothes.Pants}
@@ -59,7 +59,7 @@ export default function StoreButtons() {
         />
       </Html>
 
-      <Html scale={0.5} position={[5, 3, -2]} transform occlude>
+      <Html scale={0.5} position={[-1, 3, -3]} transform occlude>
         <ButtonComponent
           showModal={() => showModal(setJacketsModalVisible)}
           buttonName={Clothes.Jackets}
@@ -74,7 +74,7 @@ export default function StoreButtons() {
         />
       </Html>
 
-      <Html scale={0.5} position={[10, 3, 4]} transform occlude>
+      <Html scale={0.5} position={[2, 3, 2]} transform occlude>
         <ButtonComponent
           showModal={() => showModal(setDressesModalVisible)}
           buttonName={Clothes.Dresses}
@@ -89,7 +89,7 @@ export default function StoreButtons() {
         />
       </Html>
 
-      <Html scale={0.5} position={[8, 0, 0]} transform occlude>
+      {/* <Html scale={0.5} position={[0, -1, -1]} transform occlude>
         <ButtonComponent
           showModal={() => showModal(setShoesModalVisible)}
           buttonName={Clothes.Shoes}
@@ -102,7 +102,7 @@ export default function StoreButtons() {
           handleOk={() => handleOk(setShoesModalVisible)}
           handleCancel={() => handleCancel(setShoesModalVisible)}
         />
-      </Html>
+      </Html> */}
     </>
   )
 }
