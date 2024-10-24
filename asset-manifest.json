@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/react-3d-project/static/css/main.5bba0585.css",
+    "main.js": "/react-3d-project/static/js/main.cf2ab425.js",
+    "static/js/453.5f3f6b34.chunk.js": "/react-3d-project/static/js/453.5f3f6b34.chunk.js",
+    "static/media/jeans.png": "/react-3d-project/static/media/jeans.f5c31abcbb5849eb48f9.png",
+    "static/media/sequenceDress.png": "/react-3d-project/static/media/sequenceDress.08c82fdb4913fd9c0a0e.png",
+    "static/media/denimJacket.png": "/react-3d-project/static/media/denimJacket.e9da452e1b69701a6326.png",
+    "static/media/woolCoat.png": "/react-3d-project/static/media/woolCoat.4f2c6fbdb187eb33f46b.png",
+    "static/media/creamLinenPants.png": "/react-3d-project/static/media/creamLinenPants.c4f4246ce9083d704bae.png",
+    "static/media/leatherJacket.png": "/react-3d-project/static/media/leatherJacket.cc7a2f586e928cca990e.png",
+    "static/media/blackLeatherPants.png": "/react-3d-project/static/media/blackLeatherPants.7486e86aeda8f1443819.png",
+    "static/media/linenDress.png": "/react-3d-project/static/media/linenDress.c4170cc712cce694f5bb.png",
+    "static/media/blueSilkDress.png": "/react-3d-project/static/media/blueSilkDress.03d0b547c7dcc10bd087.png",
+    "index.html": "/react-3d-project/index.html",
+    "main.5bba0585.css.map": "/react-3d-project/static/css/main.5bba0585.css.map",
+    "main.cf2ab425.js.map": "/react-3d-project/static/js/main.cf2ab425.js.map",
+    "453.5f3f6b34.chunk.js.map": "/react-3d-project/static/js/453.5f3f6b34.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5bba0585.css",
+    "static/js/main.cf2ab425.js"
+  ]
+}
