@@ -14,6 +14,7 @@ export default function StoreButtons() {
     const [isDressesModalVisible, setDressesModalVisible] = useState(false);
     const [isJacketsModalVisible, setJacketsModalVisible] = useState(false);
     const [isShoesModalVisible, setShoesModalVisible] = useState(false);
+    const [isTopsModalVisible, setTopsModalVisible] = useState(false);
 
     const showModal = (setVisibility) => {
         setVisibility(true);
@@ -35,6 +36,8 @@ export default function StoreButtons() {
           : isJacketsModalVisible
           ? "none"
           : isShoesModalVisible
+          ? "none"
+          : isTopsModalVisible
           ? "none"
           : "inline";
         return test;
@@ -86,6 +89,21 @@ export default function StoreButtons() {
           body={clothingItemsData.Dresses}
           handleOk={() => handleOk(setDressesModalVisible)}
           handleCancel={() => handleCancel(setDressesModalVisible)}
+        />
+      </Html>
+
+      <Html scale={0.5} position={[1.5, 0, 2]} transform occlude>
+        <ButtonComponent
+          showModal={() => showModal(setTopsModalVisible)}
+          buttonName={Clothes.Tops}
+          display={isButtonDisplay()}
+        />
+        <CustomModal
+          title={Clothes.Tops}
+          isModalVisible={isTopsModalVisible}
+          body={clothingItemsData.Dresses}
+          handleOk={() => handleOk(setTopsModalVisible)}
+          handleCancel={() => handleCancel(setTopsModalVisible)}
         />
       </Html>
 
